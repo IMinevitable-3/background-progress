@@ -19,6 +19,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
+    "rest_api",
 ]
 
 MIDDLEWARE = [
@@ -121,3 +123,17 @@ CELERY_TASK_TRACK_STARTED = True
 CELERY_ACKS_LATE = True
 CELERY_WORKER_SEND_TASK_EVENTS = True
 CELERY_TASK_SEND_SENT_EVENT = True
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "INFO",
+    },
+}
