@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  rabbitmq:
+    build:
+      context: ./message_broker
+      dockerfile: Dockerfile.rabbitmq
+    hostname: my_rabbit
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - rabbit_network
+
+  redis:
+    container_name: redis
+    image: redis:7.2.4-bookworm
+    restart: always
+    ports:
+      - "6379:6379"
+
+networks:
+  rabbit_network:
+    driver: bridge
